@@ -1,19 +1,20 @@
-const api_url = 'https://api.twitch.tv/helix/streams?game_id=21779';
 const twitchClientId = {
   'Client-ID': '2p71xs0ppf74z0e2zk9ke9w9c7o16x'
 };
 let pagination = '';
 let isLoading = false;
+let currentLang = 'zh';
 
-async function getStreamList(apiUrl) {
+
+async function getStreamList(queryString) {
   isLoading = true;
-  const response = await fetch(apiUrl, {
+  let api_url = 'https://api.twitch.tv/helix/streams?game_id=21779&language=' + queryString;
+  const response = await fetch(api_url, {
     headers: new Headers(twitchClientId)
   });
   const streams = await response.json();
   const {data} = streams;
   pagination = streams.pagination.cursor;
-  console.log(streams);
   data.forEach(item => {
     displayStreamList(item);
   });
@@ -59,14 +60,27 @@ async function displayStreamList(item) {
   `;
 }
 
-getStreamList(api_url).catch(err => console.log(err));
+const changeLang = (lang) => {
+  const livesContainer = document.getElementById('lives-container');
+  if (lang !== currentLang) {
+    currentLang = lang;
+    document.querySelector('.main-heading').textContent = window.I18N[lang].TITLE;
+    while (livesContainer.firstChild) {
+      livesContainer.removeChild(livesContainer.firstChild);
+    }
+    getStreamList(lang);
+  }
+}
+
+getStreamList(currentLang).catch(err => console.log(err));
 
 window.onscroll = () => {
   scrollToBottom();
 };
 
+// Prevent scroll event triggered repeatedly within a short time.
 const scrollToBottom = _.debounce(() => {
   if (window.pageYOffset + window.innerHeight >= document.body.offsetHeight - 200 && isLoading === false) {
-    getStreamList(api_url + '&after=' + pagination);
+    getStreamList(currentLang + '&after=' + pagination);
   }
 }, 500);

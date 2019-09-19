@@ -1,5 +1,6 @@
 $color-black: #000;
 $color-white: #fff;
+$color-primary: #644696;
 
 @mixin filter($argument) {
   -webkit-filter: brightness($argument);
@@ -28,6 +29,31 @@ body {
   min-height: 100vh;
   background-color: rgba($color-black, 0.5);
   padding: 5rem;
+
+  &-heading {
+    font-family: sans-serif;
+    color: $color-white;
+    font-size: 4rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .lang-btn-box {
+    text-align: center;
+  }
+
+  .lang-btn:link,
+  .lang-btn:visited {
+    color: $color-white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+
+  .lang-btn:hover {
+    color: $color-primary;
+  }
 }
 
 .lives-container {
