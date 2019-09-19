@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 75%; }
+
+body {
+  background-image: url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg);
+  background-size: cover;
+  background-attachment: fixed; }
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5rem; }
+
+.lives-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 81rem; }
+  .lives-container .live {
+    width: 25rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 1rem;
+    transition: box-shadow .3s, filter .3s; }
+    .lives-container .live:hover {
+      box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+      -webkit-filter: brightness(1.5);
+      filter: brightness(1.5); }
+    .lives-container .live__scene {
+      width: 100%;
+      height: 14rem;
+      overflow: hidden;
+      background-image: url(https://static-cdn.jtvnw.net/ttv-static/404_preview-320x180.jpg); }
+    .lives-container .live__picture {
+      height: auto;
+      width: 100%; }
+    .lives-container .live__detail {
+      padding: 1rem;
+      display: flex;
+      align-items: center; }
+    .lives-container .live__host-photo {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 5rem;
+      margin-right: 1rem; }
+    .lives-container .live__text {
+      display: inline-block;
+      width: 16rem;
+      color: #fff;
+      font-size: 1.2rem; }
+    .lives-container .live__channel-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .lives-container .live__host-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
