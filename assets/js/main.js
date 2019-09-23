@@ -72,15 +72,15 @@ const changeLang = (lang) => {
   }
 }
 
-getStreamList(currentLang).catch(err => console.log(err));
-
-window.onscroll = () => {
-  scrollToBottom();
-};
-
 // Prevent scroll event triggered repeatedly within a short time.
 const scrollToBottom = _.debounce(() => {
   if (window.pageYOffset + window.innerHeight >= document.body.offsetHeight - 200 && isLoading === false) {
     getStreamList(currentLang + '&after=' + pagination);
   }
 }, 500);
+
+window.onscroll = () => {
+  scrollToBottom();
+};
+
+getStreamList(currentLang).catch(err => console.log(err));
