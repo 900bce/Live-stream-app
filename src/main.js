@@ -1,9 +1,14 @@
+import './lang-en.js';
+import './lang-jp.js';
+import './lang-zh-tw.js';
+
 const twitchClientId = {
   'Client-ID': '2p71xs0ppf74z0e2zk9ke9w9c7o16x'
 };
+const defaultLang = 'zh';
+let currentLang = defaultLang;
 let pagination = '';
 let isLoading = false;
-let currentLang = 'zh';
 
 
 async function getStreamList(queryString) {
@@ -82,5 +87,15 @@ const scrollToBottom = _.debounce(() => {
 window.onscroll = () => {
   scrollToBottom();
 };
+
+document.getElementById('lang-zh').addEventListener('click', () => {
+  changeLang('zh')
+});
+document.getElementById('lang-en').addEventListener('click', () => {
+  changeLang('en')
+});
+document.getElementById('lang-jp').addEventListener('click', () => {
+  changeLang('ja')
+});
 
 getStreamList(currentLang).catch(err => console.log(err));
