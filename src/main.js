@@ -1,7 +1,5 @@
-import './lang-en.js';
-import './lang-jp.js';
-import './lang-zh-tw.js';
 import _ from 'lodash';
+import i18n from './i18n';
 
 const twitchClientId = {
   'Client-ID': '2p71xs0ppf74z0e2zk9ke9w9c7o16x'
@@ -10,6 +8,11 @@ const defaultLang = 'zh';
 let currentLang = defaultLang;
 let pagination = '';
 let isLoading = false;
+
+
+const showTitle = (lang) => {
+  document.querySelector('.main-heading').textContent = i18n[lang].TITLE;
+}
 
 
 async function getStreamList(queryString) {
@@ -27,6 +30,7 @@ async function getStreamList(queryString) {
   isLoading = false;
 }
 
+
 // get Twitch user profile image and login id
 async function getHost(hostID) {
   const response = await fetch(`https://api.twitch.tv/helix/users?id=${hostID}`, {
@@ -37,6 +41,7 @@ async function getHost(hostID) {
   const loginId = userData.data[0].login;
   return [profileImgUrl, loginId];
 }
+
 
 async function displayStreamList(item) {
   let profileImgUrl, loginId;
@@ -66,17 +71,19 @@ async function displayStreamList(item) {
   `;
 }
 
+
 const changeLang = (lang) => {
   const livesContainer = document.getElementById('lives-container');
   if (lang !== currentLang) {
     currentLang = lang;
-    document.querySelector('.main-heading').textContent = window.I18N[lang].TITLE;
     while (livesContainer.firstChild) {
       livesContainer.removeChild(livesContainer.firstChild);
     }
+    showTitle(lang);
     getStreamList(lang);
   }
 }
+
 
 // Prevent scroll event triggered repeatedly within a short time.
 const scrollToBottom = _.debounce(() => {
@@ -85,9 +92,11 @@ const scrollToBottom = _.debounce(() => {
   }
 }, 500);
 
+
 window.onscroll = () => {
   scrollToBottom();
 };
+
 
 // Language select buttons
 document.getElementById('lang-zh').addEventListener('click', () => {
@@ -100,5 +109,7 @@ document.getElementById('lang-jp').addEventListener('click', () => {
   changeLang('ja')
 });
 
+
 //  App entry point
-getStreamList(currentLang).catch(err => console.log(err));
+  showTitle(currentLang);
+  getStreamList(currentLang).catch(err => console.log(err));
