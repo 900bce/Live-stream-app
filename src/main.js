@@ -89,6 +89,7 @@ window.onscroll = () => {
   scrollToBottom();
 };
 
+// Language select buttons
 document.getElementById('lang-zh').addEventListener('click', () => {
   changeLang('zh')
 });
@@ -99,4 +100,5 @@ document.getElementById('lang-jp').addEventListener('click', () => {
   changeLang('ja')
 });
 
+//  App entry point
 getStreamList(currentLang).catch(err => console.log(err));
