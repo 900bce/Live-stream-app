@@ -1,14 +1,36 @@
 {
-  "name": "hw3",
+  "name": "live_stream_app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass assets/sass/main.scss assets/css/style.css -w"
+    "compile:sass": "node-sass assets/sass/main.scss assets/css/style.css -w",
+    "build": "webpack --mode development",
+    "deploy": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.12.0"
-  }
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
+    "node-sass": "^4.12.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "lodash": "^4.17.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/900bce/Live-stream-app.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/900bce/Live-stream-app/issues"
+  },
+  "homepage": "https://github.com/900bce/Live-stream-app#readme"
 }
