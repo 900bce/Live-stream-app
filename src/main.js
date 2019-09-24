@@ -1,6 +1,7 @@
 import './lang-en.js';
 import './lang-jp.js';
 import './lang-zh-tw.js';
+import _ from 'lodash';
 
 const twitchClientId = {
   'Client-ID': '2p71xs0ppf74z0e2zk9ke9w9c7o16x'
