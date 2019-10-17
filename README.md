@@ -1,5 +1,6 @@
 # Live-stream-app
-這是一個參考 [“從新手到中手”](https://github.com/aszx87410/frontend-intermediate-course) 的專案作業
+* demo: https://900bce.github.io/Live-stream-app/
+* 這是一個參考 [“從新手到中手”](https://github.com/aszx87410/frontend-intermediate-course) 的專案作業
 ## User story:
 * 顯示20個 League of Legends 最熱門直播。
 * 每個方塊包含：
